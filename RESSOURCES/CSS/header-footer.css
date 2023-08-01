@@ -1,0 +1,107 @@
+/* ==============================------- HEADER -------============================== */
+header nav{
+    height: 10vh;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--black);
+}
+
+header nav #logo{
+    height: 100%;
+}
+
+header nav #logo a{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav #logo a img{
+    height: 100%;
+}
+
+header nav ul{
+    display: flex;
+}
+
+header nav ul li{
+    margin: 0 15px;
+}
+
+header nav ul li a{
+    font-size: 1.2em;
+    color: var(--white);
+}
+
+header nav ul li a.button{
+    padding: 8px 12px;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 35px;
+    transition: .2s;
+}
+
+header nav ul li a.button:hover{
+    background-color: var(--blue-clear);
+}
+
+header nav ul li.button-underline a::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: .2s;
+}
+
+header nav ul li.button-underline:hover a::after{
+    width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    header nav {
+        height: 15vh;
+        flex-direction: column;
+        padding-top: 10px;
+        padding-bottom: 25px;
+    }
+
+    header nav #logo {
+        height: 60%;
+        margin-bottom: 25px;
+    }
+}
+
+/* ==============================------- FIN HEADER -------============================== */
+
+/* ==============================------- FOOTER -------============================== */
+
+footer{
+    padding: 0 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: var(--black);
+}
+
+footer div{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    color: var(--white);
+}
+
+footer div ul li img{
+    width: 100px;
+}
+
+footer div ul li a{
+    color: var(--white);
+}
+
+footer div ul li a:hover{
+    text-decoration: underline;
+}

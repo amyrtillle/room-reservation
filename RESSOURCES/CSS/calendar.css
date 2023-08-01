@@ -1,0 +1,979 @@
+.ec-days, .ec-day, .ec-day-title, .ec-resource {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+    font-family: var(--font-text);
+}
+
+.ec {
+    display: flex;
+    flex-direction: column;
+    width: 90vw !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.ec ::-webkit-scrollbar {
+    background: #fff;
+}
+
+.ec ::-webkit-scrollbar-thumb {
+    border: 4px solid #fff;
+    box-shadow: none;
+    background: #dadce0;
+    border-radius: 8px;
+    min-height: 40px;
+}
+
+.ec :hover::-webkit-scrollbar-thumb {
+    background: #bdc1c6;
+}
+
+.ec-hidden-scroll {
+    display: none;
+    overflow-y: scroll;
+    visibility: hidden;
+    flex-shrink: 0;
+}
+
+.ec-with-scroll .ec-hidden-scroll {
+    display: block;
+}
+
+.ec-toolbar {
+    padding: 12px;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.ec-toolbar > * {
+    display: flex;
+    margin-bottom: -0.5em;
+}
+
+.ec-toolbar > * > * {
+}
+
+.ec-toolbar > * > *:not(:last-child) {
+    margin-right: 0.75em;
+}
+
+.ec-title {
+    margin: 0;
+    font-size: 1em;
+    color: var(--blue-dark);
+}
+
+.ec-button {
+    background-color: var(--blue);
+    border: 1px solid var(--blue-dark);
+    color: var(--white);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: .2s;
+}
+
+.ec-button:not(:disabled) {
+    color: var(--white);
+    cursor: pointer;
+}
+
+.ec-button:not(:disabled):hover, .ec-button.ec-active {
+    background-color: var(--blue-clear);
+    border-color: var(--blue-dark);
+}
+
+.ec-button-group {
+    display: inline-flex;
+}
+
+.ec-button-group .ec-button:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+}
+
+.ec-button-group .ec-button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.ec-icon {
+    display: inline-block;
+    width: 1em;
+}
+
+.ec-icon.ec-prev:after,
+.ec-icon.ec-next:after {
+    content: "";
+    position: relative;
+    width: 0.5em;
+    height: 0.5em;
+    border-top: 2px solid var(--white);
+    border-right: 2px solid var(--white);
+    display: inline-block;
+}
+
+.ec-icon.ec-prev:after {
+    transform: rotate(-135deg) translate(-2px, 2px);
+}
+
+.ec-icon.ec-next:after {
+    transform: rotate(45deg) translate(-2px, 2px);
+}
+
+.ec-header,
+.ec-all-day,
+.ec-body,
+.ec-days,
+.ec-day {
+    border: 2px solid var(--blue);
+}
+
+.ec-header {
+    margin: 0 20px;
+    display: flex;
+    flex-shrink: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.ec-header .ec-resource {
+    flex-direction: column;
+}
+
+.ec-header .ec-resource .ec-days {
+    border-top-style: solid;
+}
+
+.ec-header .ec-days {
+    border-bottom: none;
+}
+
+.ec-header .ec-day {
+    min-height: 24px;
+    line-height: 24px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--black);
+}
+
+.ec-all-day {
+    flex-shrink: 0;
+    border-top: none;
+}
+
+.ec-all-day .ec-days {
+    border-bottom: none;
+}
+
+.ec-all-day .ec-day {
+    padding-bottom: 4px;
+}
+
+.ec-body {
+    margin: 0 20px 20px 20px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0 0 10px 10px;
+}
+
+.ec:not(.ec-list) .ec-body {
+    border-top: none;
+}
+
+.ec-month .ec-body {
+    flex: 1 1 auto;
+}
+
+.ec-sidebar {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+    padding: 0 4px 0 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--font-text);
+}
+
+.ec-sidebar-title {
+    visibility: hidden;
+    overflow-y: hidden;
+    height: 0;
+    text-align: right;
+}
+
+.ec-all-day .ec-sidebar-title {
+    visibility: visible;
+    height: auto;
+    padding: 8px 0;
+}
+
+.ec-content {
+    display: flex;
+}
+
+.ec-month .ec-content {
+    flex-direction: column;
+    height: 100%;
+}
+
+.ec-month .ec-uniform .ec-content {
+    overflow: hidden;
+}
+
+.ec-list .ec-content {
+    flex-direction: column;
+}
+
+.ec-resource {
+    display: flex;
+}
+
+.ec-days {
+    display: flex;
+    border-style: none none solid;
+}
+
+.ec-days:last-child {
+    border-bottom: none;
+}
+
+.ec-month .ec-days,
+.ec-resource .ec-days {
+    flex: 1 0 auto;
+}
+
+.ec-month .ec-uniform .ec-days {
+    flex: 1 1 0%;
+    min-height: 0;
+}
+
+.ec-day {
+    border-style: none none none solid;
+}
+
+.ec-day.ec-today {
+    background-color: var(--blue-clear);
+}
+
+.ec-day.ec-highlight {
+    background-color: #e5f7fe;
+}
+
+.ec-month .ec-body .ec-day {
+    min-height: 5em;
+    position: relative;
+}
+
+.ec-month .ec-uniform .ec-day {
+    min-height: 0;
+}
+
+.ec-month .ec-day:first-child {
+    border-left: none;
+}
+
+.ec-day.ec-other-month .ec-day-head {
+    opacity: 0.3;
+}
+
+.ec-list .ec-day {
+    flex: 1 0 auto;
+    background-color: #fff;
+    border-style: solid none;
+    padding: 8px 14px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.ec-list .ec-day:first-child {
+    border-top: none;
+}
+
+.ec-month .ec-day-head {
+    text-align: right;
+    padding: 4px 4px 3px;
+}
+
+.ec-month .ec-day-foot {
+    position: absolute;
+    bottom: 0;
+    padding: 2px;
+    font-size: 0.85em;
+}
+
+.ec-month .ec-day-foot a {
+    cursor: pointer;
+}
+
+.ec-list .ec-day-side {
+    float: right;
+}
+
+.ec-list .ec-no-events {
+    text-align: center;
+    padding: 5em 0;
+}
+
+.ec-events {
+    margin: 0 6px 0 0;
+}
+
+.ec-week .ec-events,
+.ec-events.ec-preview {
+    position: relative;
+}
+
+.ec-event {
+    display: flex;
+    padding: 2px;
+    color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 1px 0 #dadce0;
+    background-color: var(--blue);
+    border-radius: 3px;
+    font-size: 0.85em;
+    line-height: 1.5;
+    z-index: 1;
+}
+
+.ec-month .ec-event,
+.ec-all-day .ec-event {
+    position: relative;
+}
+
+.ec-week .ec-body .ec-event {
+    position: absolute;
+}
+
+.ec-list .ec-event {
+    flex-direction: row;
+    padding: 8px 14px;
+    color: inherit;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+}
+
+.ec-event.ec-preview {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    opacity: 0.8;
+}
+
+.ec-event.ec-pointer {
+    color: inherit;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    position: absolute;
+    z-index: 0;
+    box-shadow: none;
+    display: none;
+}
+
+.ec-day:hover .ec-event.ec-pointer {
+    display: flex;
+}
+
+.ec-event-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: var(--font-text);
+}
+
+.ec-month .ec-event-body,
+.ec-all-day .ec-event-body {
+    flex-direction: row;
+}
+
+.ec-event-tag {
+    width: 4px;
+    border-radius: 2px;
+    margin-right: 8px;
+}
+
+.ec-event-time {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 0 1px 0;
+    flex-shrink: 0;
+}
+
+.ec-month .ec-event-time {
+    margin: 0 3px 0 0;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.ec-event-title {
+    overflow: hidden;
+}
+
+.ec-month .ec-event-title,
+.ec-all-day .ec-event-title {
+    min-height: 1.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ec-week .ec-body .ec-event-title {
+    position: sticky;
+    top: 0;
+}
+
+.ec-list .ec-event-title {
+    font-size: 1rem;
+}
+
+.ec-draggable {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.ec-ghost {
+    opacity: 0.5;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.ec-bg-events {
+    position: relative;
+}
+
+.ec-bg-event {
+    position: absolute;
+    background-color: #dadce0;
+    opacity: 0.3;
+    width: 100%;
+    z-index: 1;
+}
+
+.ec-time,
+.ec-line {
+    height: 24px;
+}
+
+.ec-time {
+    position: relative;
+    line-height: 24px;
+    top: -12px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.ec-header .ec-time,
+.ec-all-day .ec-time {
+    visibility: hidden;
+    overflow-y: hidden;
+    height: 0;
+}
+
+.ec-lines {
+    width: 8px;
+}
+
+.ec-line:not(:first-child):after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: .5px solid var(--blue-dark);
+    pointer-events: none;
+}
+
+.ec-current-time {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #e91e63;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ec-day:hover .ec-current-time {
+    opacity: 0.5;
+}
+
+.ec-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.ec-resizable {
+    position: absolute;
+    width: 6px;
+    background-color: #000;
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ec-resizable.ec-resizable-top {
+    top: -3px;
+    cursor: n-resize;
+}
+
+.ec-resizable.ec-resizable-bottom {
+    bottom: -3px;
+    cursor: s-resize;
+}
+
+.ec-resizable.ec-resizable-left {
+    left: -3px;
+    cursor: w-resize;
+}
+
+.ec-resizable.ec-resizable-right {
+    right: -3px;
+    cursor: e-resize;
+}
+
+.ec-selected .ec-overlay,
+.ec-selected .ec-resizable {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ec-selected .ec-resizable.ec-resizable-top,
+.ec-selected .ec-resizable.ec-resizable-bottom {
+    width: 100%;
+}
+
+.ec-selected .ec-resizable.ec-resizable-left,
+.ec-selected .ec-resizable.ec-resizable-right {
+    height: 100%;
+}
+
+.ec-hidden {
+    display: none !important;
+}
+
+.ec-unselectable,
+.ec-unselectable * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.ec-unselectable.ec-selectable,
+.ec-unselectable.ec-selectable * {
+    pointer-events: auto;
+}
+
+.ec-disabled,
+.ec-disabled * {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.ec-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ec-event-dragging .ec-event.ec-draggable,
+.ec-event-dragging .ec-event.ec-draggable * {
+    cursor: grabbing !important;
+    pointer-events: none !important;
+}
+
+.ec-event-dragging .ec-event.ec-draggable.ec-disabled,
+.ec-event-dragging .ec-event.ec-draggable.ec-disabled * {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+.ec-event-dragging .ec-event.ec-draggable.ec-disabled .ec-event-title,
+.ec-event-dragging .ec-event.ec-draggable.ec-disabled .ec-event-time {
+    pointer-events: auto !important;
+}
+
+.ec-event-dragging .ec-event.ec-draggable .ec-event-tag {
+    cursor: grabbing !important;
+    pointer-events: none !important;
+}
+
+.ec-event-dragging .ec-event.ec-draggable.ec-disabled .ec-event-tag {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+.ec-event-resizing .ec-event.ec-draggable,
+.ec-event-resizing .ec-event.ec-draggable * {
+    pointer-events: none !important;
+}
+
+.ec-event-resizing .ec-event.ec-draggable.ec-disabled,
+.ec-event-resizing .ec-event.ec-draggable.ec-disabled * {
+    pointer-events: none !important;
+}
+
+.ec-event-resizing .ec-event.ec-draggable.ec-disabled .ec-event-title,
+.ec-event-resizing .ec-event.ec-draggable.ec-disabled .ec-event-time {
+    pointer-events: auto !important;
+}
+
+.ec-event-resizing .ec-event.ec-draggable .ec-event-tag {
+    pointer-events: none !important;
+}
+
+.ec-event-resizing .ec-event.ec-draggable.ec-disabled .ec-event-tag {
+    pointer-events: none !important;
+}
+
+.ec-event-resizing.ec-resizing-right .ec-resizable.ec-resizable-right,
+.ec-event-resizing.ec-resizing-left .ec-resizable.ec-resizable-left {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: ew-resize !important;
+}
+
+.ec-event-resizing.ec-resizing-top .ec-resizable.ec-resizable-top,
+.ec-event-resizing.ec-resizing-bottom .ec-resizable.ec-resizable-bottom {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: ns-resize !important;
+}
+
+.ec-resource.ec-overflow,
+.ec-event.ec-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ec-scrollable {
+    overflow: auto;
+}
+
+.ec-list {
+    position: relative;
+}
+
+.ec-list .ec-events {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.ec-list .ec-day {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.ec-list .ec-day:first-child {
+    z-index: 2;
+}
+
+.ec-list .ec-day.ec-today {
+    background-color: var(--blue-clear);
+}
+
+.ec-list .ec-event.ec-preview {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.ec-list .ec-event.ec-pointer {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-first,
+.ec-list .ec-event.ec-pointer.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-pointer:hover,
+.ec-list .ec-event.ec-pointer:focus {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-hover {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-hover.ec-event-first,
+.ec-list .ec-event.ec-pointer.ec-event-hover.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-selected {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-selected.ec-event-first,
+.ec-list .ec-event.ec-pointer.ec-event-selected.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-dragging {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-first,
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-hover {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-hover.ec-event-first,
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-hover.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-selected {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-selected.ec-event-first,
+.ec-list .ec-event.ec-pointer.ec-event-dragging.ec-event-selected.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-first.ec-event-hover,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-last.ec-event-hover {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-last.ec-event-hover {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-last.ec-event-hover {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-only.ec-event-first {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-only.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-last.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-first {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-last.ec-event-first {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first,
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-last {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-last.ec-event-only {
+    display: flex;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-last {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-last.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-only {
+    display: none;
+}
+
+.ec-list .ec-event.ec-draggable.ec-disabled.ec-event-selected.ec-event-hover.ec-event-first.ec-event-hover.ec-event-last.ec-event-first.ec-event-only.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-last.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-last.ec-event-only.ec-event-first.ec-event-first.ec-event-last.ec-event-first.ec-event-only.ec-event-only.ec-event-first.ec-event-last {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .ec{
+        position: relative;
+        overflow-x: scroll;
+    }
+
+    .ec-toolbar{
+        position: sticky;
+        left: 0;
+        flex-direction: column;
+    }
+
+    .ec-toolbar > *{
+        margin: 5px 0;
+    }
+
+    .ec-header{
+        min-width: 680px;
+    }
+
+    .ec-body{
+        min-width: 680px;
+    }
+}
+
+

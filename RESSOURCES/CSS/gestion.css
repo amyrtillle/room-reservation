@@ -1,0 +1,320 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+main ul#nav{
+    margin-top: 35px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 80vw;
+
+
+}
+
+main ul#nav li{
+    margin: 0 5px;
+    padding: 8.5px 15px;
+    background-color: var(--grey);
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+}
+
+main ul#nav li.active{
+    background: linear-gradient(0deg, var(--grey) 5%, var(--blue-dark) 100%);
+}
+
+a{
+    color: var(--black);
+    text-decoration: none;
+}
+
+#content-error{
+    position: absolute;
+    top: -30%; /* 0px good position */
+    right: 25vw;
+    left: 25vw;
+    padding: 15px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--red-clear);
+    color: var(--white);
+    border-radius: 15px;
+    z-index: 11;
+    transition: .2s;
+}
+
+#content-error h3, #content-error p{
+    text-align: center;
+}
+
+#formReservation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    background-color: var(--grey);
+    border-radius: 15px 15px 35px 35px;
+}
+
+#formReservation #label-boutonsubit{
+    color: var(--black);
+}
+
+#formFilter{
+    margin: 7.5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 90%;
+    max-width: 650px;
+}
+
+#form-container, #calendar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#filterButton{
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 35px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#filterButton:hover{
+    background-color: #b6b6b6;
+}
+
+#filterButton ion-icon{
+    margin-right: 5px;
+}
+
+#backgroundFilterList{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: -25px;
+    background-color: rgba(0,0,0,.55);
+    z-index: 1001;
+}
+
+#filterPage{
+    padding: 15px;
+    display: none;
+    position: absolute;
+    top: 25vh;
+    right: 35vw;
+    left: 35vw;
+    bottom: 25vh;
+    z-index: 1001;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 25px;
+}
+
+#filterPage #cross{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+}
+
+#filterPage #cross ion-icon{
+    font-size: 2.5em;
+    border-radius: 999px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#filterPage #cross ion-icon:hover{
+    background-color: var(--blue);
+}
+
+#filterPage #filterTitle{
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#filterList .filterElement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 7.5px 0;
+    transition: .2s;
+}
+
+#filterList .filterElement input{
+    display: none;
+}
+
+#filterList .filterElement label{
+    padding: 5px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: transparent;
+    border-radius: 999px;
+    user-select: none;
+    transition: .2s;
+}
+
+#filterList .filterElement label:hover{
+    background-color: var(--blue);
+}
+
+#filterList .filterElement input:checked[type="checkbox"] + label{
+    font-weight: 700;
+    background-color: var(--blue-dark);
+}
+
+#calendar{
+    margin: 20px 15px 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 730px;
+}
+
+#myReservation{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    background-color: var(--grey);
+    border-radius: 15px 15px 35px 35px;
+}
+
+#myReservation table {
+    color: var(--black);
+}
+
+.hide-preview {
+    opacity: 0 !important;
+}
+
+/* =========================---------------- CALENDAR ----------------========================= */
+
+@media screen and (max-width: 1820px) {
+    #formReservation{
+        margin-bottom: 35px;
+    }
+
+    #form-container {
+        padding-bottom: 0;
+    }
+
+    .ec{
+        position: relative;
+        overflow-x: scroll;
+        border-radius: 0;
+    }
+
+    .ec-toolbar{
+        position: sticky;
+        left: 0;
+        flex-direction: column;
+    }
+
+    .ec-toolbar > *{
+        margin: 5px 0;
+    }
+
+    .ec-header{
+        min-width: 680px;
+        margin: 0;
+    }
+
+    .ec-body{
+        min-width: 680px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    #formReservation{
+        flex-direction: column-reverse;
+        width: 95vw;
+    }
+
+    #calendar{
+        margin: 0;
+        width: 100%;
+    }
+
+    .ec{
+        position: relative;
+        overflow-x: scroll;
+        border-radius: 0;
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
+
+    .ec-toolbar{
+        position: sticky;
+        left: 0;
+        flex-direction: column;
+    }
+
+    .ec-toolbar > *{
+        margin: 5px 0;
+    }
+
+    .ec-header{
+        min-width: 680px;
+        margin: 0;
+    }
+
+    .ec-body{
+        min-width: 680px;
+        margin: 0 0 20px 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #form-container {
+        width: 80%;
+        padding: 0;
+    }
+
+    #filterPage{
+        right: 15vw;
+        left: 15vw;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    #form-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    #filterPage{
+        right: 10vw;
+        left: 10vw;
+    }
+}
